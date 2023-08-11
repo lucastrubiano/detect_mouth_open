@@ -48,7 +48,7 @@ while True:
             face_locations, face_landmarks_list
         ):
             # Draw a box around the face
-            cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+            # cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 
             # Display text for mouth open
             if is_mouth_open(face_landmarks):
@@ -56,9 +56,10 @@ while True:
                 print("Mouth is open")
 
             # cv2.putText(frame, text, (left, top - 50), cv2.FONT_HERSHEY_DUPLEX, 1.0, (255, 255, 255), 1)
-
-    # Display the resulting image
-    cv2.imshow("Video", frame)
+    try:
+        cv2.imshow("Video", face_image)
+    except:
+        pass
 
     # Hit 'q' on the keyboard to quit!
     if cv2.waitKey(1) & 0xFF == ord("q"):
