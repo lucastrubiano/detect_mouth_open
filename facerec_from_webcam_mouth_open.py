@@ -45,22 +45,22 @@ while True:
 
     # Find all the faces and face enqcodings in the frame of video
     face_locations = [face_recognition.face_locations(frame)[0]]
-    print("face_locations: ")
-    print(len(face_locations))
+    # print("face_locations: ")
+    # print(len(face_locations))
 
-    top, right, bottom, left = face_locations[0]
+    # top, right, bottom, left = face_locations[0]
 
     # Obtain a new frame with the face centered
-    face_image = frame[top:bottom, left:right]
+    # face_image = frame[top:bottom, left:right]
     
     face_encodings = face_recognition.face_encodings(
-        face_image, None, num_jitters=1, model="small"
+        frame, face_locations, num_jitters=1, model="small"
     )
-    print("face_encodings: ")
-    print(len(face_encodings))
-    face_landmarks_list = face_recognition.face_landmarks(face_image)
-    print("face_landmarks_list: ")
-    print(len(face_landmarks_list))
+    # print("face_encodings: ")
+    # print(len(face_encodings))
+    face_landmarks_list = face_recognition.face_landmarks(frame)
+    # print("face_landmarks_list: ")
+    # print(len(face_landmarks_list))
 
     # Loop through each face in this frame of video
     for (top, right, bottom, left), face_encoding, face_landmarks in zip(face_locations, face_encodings, face_landmarks_list):
